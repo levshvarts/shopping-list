@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: foods-server
+  labels:
+    app: foods-server
+    release: prometheus #release from prometheus-operator release name
+spec:
+  selector:
+    matchLabels:
+      app: foods-server # target user app service label
+  endpoints:
+  - targetPort: 5656
+    path: /metrics

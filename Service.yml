@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: foods-server
+  labels:
+    app: foods-server
+spec:
+  type: LoadBalancer
+  ports:
+  - name: tcp5656
+    protocol: TCP
+    port: 5656
+    targetPort: 5656
+  selector:
+    app: foods-server

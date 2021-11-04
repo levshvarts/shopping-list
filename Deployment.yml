@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foods-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foods-server
+  template:
+    metadata:
+      labels:
+        app: foods-server
+    spec:
+      volumes:
+      containers:
+      - name: foods-server
+        # NOTE: change the image to the one you built for this app
+        image: docker.io/pinkstone/public:latest 
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5656
+          protocol: TCP
